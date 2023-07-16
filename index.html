@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Obsidian</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        /* CSS styles go here */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: white;
+        }
+
+        #logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .search-input {
+            width: 0;
+            height: 50px;
+            padding: 0 10px;
+            border: none;
+            border-radius: 25px;
+            transition: width 0.3s ease;
+        }
+
+        .search-input.expand {
+            width: 200px;
+        }
+
+        .upload-icon {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        main {
+            padding: 20px;
+            overflow-y: scroll;
+            max-height: 600px;
+        }
+
+        .video-container {
+            width: 400px;
+            height: 700px;
+            margin: 0 auto 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-box {
+            background-color: lightgray;
+            border-radius: 0;
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .group-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .group-info .pfp {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ccc;
+        }
+
+        .group-info .group-name {
+            margin-top: 5px;
+        }
+
+        .like-button {
+            position: absolute;
+            top: 10px;
+            right: 50px;
+            cursor: pointer;
+        }
+
+        .like-button img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .comment-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: url("comments.png") no-repeat center;
+            background-size: contain;
+            border: none;
+            cursor: pointer;
+        }
+
+        .comment-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comment-input {
+            width: 200px;
+            height: 30px;
+            margin-top: 10px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .comments-container {
+            margin-top: 10px;
+        }
+
+        .comment {
+            background-color: #eee;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo-container">
+            <img id="logo" src="logo.png" alt="Logo">
+        </div>
+        <div class="search-container">
+            <img class="search-icon" src="search.png" alt="Search">
+            <input class="search-input" type="text" placeholder="Search...">
+        </div>
+        <div class="upload-container">
+            <label for="upload-input">
+                <img class="upload-icon" src="upload.png" alt="Upload">
+            </label>
+            <input id="upload-input" type="file" accept="video/mp4" style="display: none">
+        </div>
+    </header>
+
+    <main>
+        <div class="video-container">
+            <div class="video-box">
+                <video class="video-player" src="Videos/video1.mp4"></video>
+                <div class="like-button" data-video-id="video1">
+                    <img src="like.png" alt="Like">
+                </div>
+                <button class="comment-button" data-video-id="video1"></button>
+                <div class="group-info">
+                    <div class="pfp"></div>
+                    <span class="group-name">@DancingCat</span>
+                </div>
+                <div class="comment-overlay">
+                    <form class="comment-form">
+                        <input class="comment-input" type="text" placeholder="Type a comment...">
+                    </form>
+                    <div class="comments-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
