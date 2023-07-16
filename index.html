@@ -199,13 +199,14 @@
     </header>
 
     <main>
+        {% for video in videos %}
         <div class="video-container">
             <div class="video-box">
-                <video class="video-player" src="Videos/video1.mp4"></video>
-                <div class="like-button" data-video-id="video1">
+                <video class="video-player" src="{{ video }}"></video>
+                <div class="like-button" data-video-id="video{{ loop.index }}">
                     <img src="like.png" alt="Like">
                 </div>
-                <button class="comment-button" data-video-id="video1"></button>
+                <button class="comment-button" data-video-id="video{{ loop.index }}"></button>
                 <div class="group-info">
                     <div class="pfp"></div>
                     <span class="group-name">@DancingCat</span>
@@ -218,10 +219,10 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </main>
 
     <footer>
-        <!-- Footer content goes here -->
     </footer>
 
     <script src="script.js"></script>
